@@ -1,6 +1,6 @@
 const install = (Vue,vm) =>{
 	Vue.prototype.$u.http.setConfig({
-		baseUrl: 'http://192.168.3.10:8000/manageAPI', //每次请求都会将baseUrl拼接上去
+		baseUrl: 'http://10.4.166.31:8000/manageAPI', //每次请求都会将baseUrl拼接上去
 		dataType: 'json', //自动将res.data转换为json
 		loadingText: '努力加载中~',
 		loadingTime: 800,
@@ -13,7 +13,7 @@ const install = (Vue,vm) =>{
 	}
 	//返回拦截器
 	Vue.prototype.$u.http.interceptor.response  = (res) =>{
-		//console.log(res)
+		console.log(res)
 		if(res.cookies.length>0){
 			uni.setStorageSync("cookie",res.cookies[0]) // 设置cookie
 		}

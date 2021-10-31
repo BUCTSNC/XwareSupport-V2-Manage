@@ -17,11 +17,18 @@
 		},
 		methods: {
 			scanToSignIn(){
+				let that = this
 				uni.scanCode({
 					onlyFromCamera:false,
 					scanType:['qrCode'],
 					success(res) {
-						console.log(res)
+						 console.log(res)
+						that.$u.api.scanCode(res.result).then(res => {
+							this.$refs.toast.show({
+								title:"签到成功",
+								type: "success",
+							})
+						})
 					}
 				})
 			}

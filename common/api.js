@@ -4,8 +4,14 @@ const install = (Vue,vm) =>{
 	let login = (username,password)=>{
 		return vm.$u.post("/login",{username:username,password:CryptoJS.SHA512(password).toString()})
 	}
+	let scanCode = (uuid) =>{
+		return vm.$u.put("/scanCode",{uuid})
+	}
 	vm.$u.api = {
-		login
+		login,
+		scanCode,
 	}
 }
-export default {install}
+export default {
+	install
+}
