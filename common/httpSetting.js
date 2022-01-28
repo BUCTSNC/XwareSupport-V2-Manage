@@ -1,6 +1,7 @@
 const install = (Vue,vm) =>{
 	Vue.prototype.$u.http.setConfig({
-		baseUrl: 'http://192.168.3.10:8000/manageAPI', //每次请求都会将baseUrl拼接上去
+		//baseUrl: 'http://127.0.0.1:8000/wxapi', //每次请求都会将baseUrl拼接上去
+		baseUrl: 'http://39.107.139.29:8000/wxapi',
 		dataType: 'json', //自动将res.data转换为json
 		loadingText: '努力加载中~',
 		loadingTime: 800,
