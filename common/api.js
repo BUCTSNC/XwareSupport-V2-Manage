@@ -1,39 +1,34 @@
+import CryptoJS  from "../utils/crypto-js.min.js"
+
 const install = (Vue,vm) =>{
-	let login = (jscode) => {
-		return vm.$u.post("/login",{jscode:jscode})
+	let register = (username,password)=>{
+		return vm.$u.post("/register",{username:username,password:CryptoJS.SHA512(password).toString()})
 	}
-	let problemTypeList = ()=>{
-		return vm.$u.get("/problemTypes")
+	let login = (username,password)=>{
+		return vm.$u.post("/login",{username:username,password:CryptoJS.SHA512(password).toString()})
 	}
-	let timeSlotList = ()=>{
-		return vm.$u.get("/timeslotList")
+	let scanCode = (uuid) =>{
+		return vm.$u.put("/scanCode",{uuid})
 	}
-	let makeAppointment = (data)=>{
-		return vm.$u.post("/Appointment",data)
+	let startService = (uuid)=>{
+		return vm.$u.put("/startService",{uuid})
 	}
-	let getAppointmentList = ()=>{
-		return vm.$u.get("/myAppointmentList")
+	let buildForm = (uuid,username)=>{
+		return vm.$u.post("/startService",{uuid:uuid,username:username})
 	}
-	let getAppointmentDetail = (uuid)=>{
-		return vm.$u.get("/Appointment",{uuid})
-	}
-	let cancelAppointment = (uuid)=>{
-		return vm.$u.delete(`/Appointment?uuid=${uuid}`)
-	}
-	let modifyAppointment = (data)=>{
-		return vm.$u.put(`/Appointment`,data)
+	// let buildForm = (uuid,username)=>{
+	// 	return vm.$u.post(`/startService?uuid=${uuid}&username=${username}`)
+	// }
+	let getMyAppointment = (username)=>{
+		return vm.$u.post("/getAppointment",{username})
 	}
 	vm.$u.api = {
+		register,
 		login,
-		problemTypeList,
-		timeSlotList,
-		makeAppointment,
-		getAppointmentList,
-		getAppointmentDetail,
-		cancelAppointment,
-		modifyAppointment,
+		scanCode,
+		startService,
+		buildForm,
+		getMyAppointment,
 	}
 }
-export default {
-	install
-}
+export default {install}
