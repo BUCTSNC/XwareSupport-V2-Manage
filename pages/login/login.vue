@@ -32,5 +32,10 @@
 </script>
 
 <style lang="scss">
-
+	.content{
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+	}
 </style>

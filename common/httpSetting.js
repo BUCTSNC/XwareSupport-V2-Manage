@@ -1,7 +1,7 @@
 <<<<<<< Updated upstream
 const install = (Vue,vm) =>{
 	Vue.prototype.$u.http.setConfig({
-		baseUrl: 'http://10.4.166.31:8000/manageAPI', //每次请求都会将baseUrl拼接上去
+		baseUrl: 'http://10.0.2.2:8000/manageAPI', //每次请求都会将baseUrl拼接上去
 		dataType: 'json', //自动将res.data转换为json
 		loadingText: '努力加载中~',
 		loadingTime: 800,
