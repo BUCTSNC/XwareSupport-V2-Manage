@@ -1,7 +1,8 @@
 <template>
 	<u-card padding="0">
-		<view slot=:head class="head">
+		<view slot="head" class="head">
 			<view class="left">{{problemType}}</view>
+			<view class="right" v-if="status == 1">填写工单&ensp;></view>
 		</view>
 		<view slot="body" class="body">
 			<view class="info">

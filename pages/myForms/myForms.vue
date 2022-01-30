@@ -10,7 +10,7 @@
 				<scroll-view scroll-y v-else enable-flex show-scrollbar :style="{height:swiperHeight+'px' }">
 					<form-card
 					v-for="(item, index) in doing" :key="item.id"
-					:problemType="item.problemtype"
+					:problemType="item.problemType"
 					:name="item.sourcesInfo.name"
 					:stuNO="item.sourcesInfo.stuNO"
 					:timeSlot="item.applyTime"
