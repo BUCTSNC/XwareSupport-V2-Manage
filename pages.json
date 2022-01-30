@@ -4,13 +4,31 @@
 	},
 	"pages": [
 		{
-			"path": "pages/index/index",
+			"path" : "pages/login/login",
 			"style": {
-				"navigationBarTitleText": "uni-app"
+			    "navigationBarTitleText": "登录",
+			    "enablePullDownRefresh": false
+			}
+		},{
+            "path" : "pages/index/index",
+            "style": {
+            	"navigationBarTitleText": "uni-app"
+            }
+        },{
+			"path" : "pages/myForms/myForms",
+			"style":{
+				"navigationBarTitleText":"我的表单",
+				"enablePullDownRefresh": false
+			}
+		},{
+			"path": "pages/register/register",
+			"style": {
+				"navigationBarTitleText":"注册",
+				"enablePullDownRefresh": false
 			}
 		}
-	    ,{
-            "path" : "pages/login/login",
+        ,{
+            "path" : "component/formCard",
             "style" :                                                                                    
             {
                 "navigationBarTitleText": "",
