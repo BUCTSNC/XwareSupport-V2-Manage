@@ -26,6 +26,7 @@
 				this.$u.api.login(this.username,this.password).then(res=>{
 					console.log(res)
 				})
+				
 			}
 		}
 	}
