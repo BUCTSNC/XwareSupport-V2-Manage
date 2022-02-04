@@ -24,7 +24,7 @@
 		},
 		onLoad(){
 			this.username = uni.getStorageSync("username")
-			this.password = uni.getStorageInfoSync("password")
+			this.password = uni.getStorageSync("password")
 		},
 		methods:{
 			login(){
