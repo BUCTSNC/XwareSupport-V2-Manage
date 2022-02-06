@@ -1,5 +1,5 @@
 <template>
-	<view class="content">
+	<view>
 		<u-form>
 			<u-form-item label="账号">
 				<u-input v-model="username" placeholder="请输入账号"></u-input>
@@ -7,10 +7,11 @@
 			<u-form-item label="密码">
 				<u-input type="password" password-icon v-model="password" placeholder="请输入密码"></u-input>
 			</u-form-item>
-			<u-button  @click="login">登录</u-button>
-			<u-button  @click="register">用户注册</u-button>
-			<u-button  @click="clear">清空表单</u-button>
 		</u-form>
+		<view>
+			<u-button type="primary" @click="login">登录</u-button>
+			<u-button type="primary" @click="register">注册</u-button>
+		</view>
 	</view>
 </template>
 
@@ -56,14 +57,19 @@
 					url:"../register/register"
 				})
 			},
-			clear(){
-				this.username = ""
-				this.password = ""
-			},
 		}
 	}
 </script>
 
 <style lang="scss">
-
+	.list{
+		width: 100%;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		u-button{
+			width: 50%;
+			margin: 0 0 150rpx 0;
+		}
+	}
 </style>

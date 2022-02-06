@@ -46,12 +46,15 @@
 						title:"密码长度应包含大小写字母、数字三种字符"
 					})
 				}else{
+					let that = this
 					console.log(this.checkPassword(this.password))
 					this.$u.api.register(this.username,this.password).then(res=>{
 						console.log(res)
 						uni.showModal({
 							title:res.msg,
 						})
+						uni.setStorageSync('username',that.username);
+						uni.setStorageSync('password',that.password);
 						setTimeout(() => {    
 							if(res.code=="200")
 								uni.redirectTo({

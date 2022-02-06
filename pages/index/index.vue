@@ -1,9 +1,10 @@
 <template>
-	<view class="content">
-		<u-button type="primary" @click="scanToSignIn">扫码签到</u-button>
-		<u-button type="primary" @click="scanToStartService">扫码开始服务</u-button>
-		<u-button type="primary" @click="jumpToMyForms">我的工单</u-button>
-		<!-- <u-button type="primary" @click="login">登录</u-button> -->
+	<view class="content" :style="{ height : windowHeight+'px'}">
+		<view class="list">
+			<u-button type="primary" @click="scanToSignIn">扫码签到</u-button>
+			<u-button type="primary" @click="scanToStartService">扫码开始服务</u-button>
+			<u-button type="primary" @click="jumpToMyForms">我的工单</u-button>
+		</view>
 	</view>
 </template>
 
@@ -12,11 +13,13 @@
 		data() {
 			return {
 				username: "",//保持登录状态未写
+				windowHeight:0
 			}
 		},
 		onLoad(params) {
 			this.username = params['username']
 			console.log("onLoad:"+this.username)
+			this.windowHeight = uni.getSystemInfoSync().windowHeight
 		},
 		methods: {
 			scanToSignIn(){
@@ -79,6 +82,22 @@
 	}
 </script>
 
-<style>
-
+<style lang="scss">
+	.content{
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+		background-color: #F3F4F6;
+		.list{
+			width: 100%;
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			u-button{
+				width: 50%;
+				margin: 0 0 150rpx 0;
+			}
+		}
+	}
 </style>

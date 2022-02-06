@@ -7,8 +7,8 @@
 		<view slot="body" class="body">
 			<view class="info">
 				<text class="title">状态</text>
-				<text class="detail" v-if="status === 1">进行中</text>
-				<text class="detail" v-else-if="status === 2">已完成</text>
+				<text class="detail" v-if="status == 1">进行中</text>
+				<text class="detail" v-else-if="status == 2">已完成</text>
 			</view>
 			<view class="info">
 				<text class="title">时间段</text>
