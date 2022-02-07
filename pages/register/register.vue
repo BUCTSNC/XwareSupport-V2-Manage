@@ -1,5 +1,5 @@
 <template>
-	<view class="content">
+	<view>
 		<u-form>
 			<u-form-item label="账号">
 				<u-input v-model="username"></u-input>
@@ -10,9 +10,10 @@
 			<u-form-item label="确认密码">
 				<u-input type="password" password-icon v-model="Cpassword"></u-input>
 			</u-form-item>
-			<u-button @click="commit">提交注册</u-button>
-			<u-button @click="clearForm">清空表单</u-button>
 		</u-form>
+		<view class="content">
+			<u-button type="primary" class="button" @click="commit">提交注册</u-button>
+		</view>
 	</view>
 </template>
 
@@ -89,5 +90,17 @@
 </script>
 
 <style lang="scss">
-
+	.content{
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+		.button{
+			width: 400rpx;
+			margin: 500rpx 0 0 0;
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+		}
+	}
 </style>

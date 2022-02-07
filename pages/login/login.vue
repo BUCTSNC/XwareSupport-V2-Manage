@@ -8,9 +8,9 @@
 				<u-input type="password" password-icon v-model="password" placeholder="请输入密码"></u-input>
 			</u-form-item>
 		</u-form>
-		<view>
-			<u-button type="primary" @click="login">登录</u-button>
-			<u-button type="primary" @click="register">注册</u-button>
+		<view class="content">
+			<u-button class="button" type="primary" @click="login">登录</u-button>
+			<u-button class="button" type="primary" @click="register">注册</u-button>
 		</view>
 	</view>
 </template>
@@ -62,14 +62,18 @@
 </script>
 
 <style lang="scss">
-	.list{
-		width: 100%;
+	.content{
 		display: flex;
 		flex-direction: column;
+		justify-content: center;
 		align-items: center;
-		u-button{
-			width: 50%;
-			margin: 0 0 150rpx 0;
+		margin: 500rpx 0 0 0;
+		.button{
+			width: 400rpx;
+			margin: 50rpx 0 0 0;
+			justify-content: center;
+			display: flex;
+			flex-direction: column;
 		}
 	}
 </style>
