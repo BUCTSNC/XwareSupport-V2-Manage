@@ -1,18 +1,24 @@
 <template>
-	<view class="content">
-		<u-form>
-			<u-form-item label="账号">
-				<u-input v-model="username"></u-input>
-			</u-form-item>
-			<u-form-item label="密码">
-				<u-input type="password" password-icon v-model="password"></u-input>
-			</u-form-item>
-			<u-form-item label="确认密码">
-				<u-input type="password" password-icon v-model="Cpassword"></u-input>
-			</u-form-item>
-			<u-button @click="commit">提交注册</u-button>
-			<u-button @click="clearForm">清空表单</u-button>
-		</u-form>
+	<view>
+		<view class="avatar">
+			<u-avatar :src="src" size=200></u-avatar>
+		</view>
+		<view class="form">
+			<u-form>
+				<u-form-item label="账号" labelWidth="120">
+					<u-input v-model="username"></u-input>
+				</u-form-item>
+				<u-form-item label="密码" labelWidth="120">
+					<u-input type="password" password-icon v-model="password" ></u-input>
+				</u-form-item>
+				<u-form-item label="确认密码" labelWidth="120">
+					<u-input type="password" password-icon v-model="Cpassword"></u-input>
+				</u-form-item>
+			</u-form>
+		</view>
+		<view class="content">
+			<u-button type="primary" class="button" @click="commit">提交注册</u-button>
+		</view>
 	</view>
 </template>
 
@@ -23,6 +29,7 @@
 				username:"",
 				password:"",
 				Cpassword:"", //确认密码
+				src:"../../static/register.jpg"
 			};
 		},
 		methods:{
@@ -46,12 +53,15 @@
 						title:"密码长度应包含大小写字母、数字三种字符"
 					})
 				}else{
+					let that = this
 					console.log(this.checkPassword(this.password))
 					this.$u.api.register(this.username,this.password).then(res=>{
 						console.log(res)
 						uni.showModal({
 							title:res.msg,
 						})
+						uni.setStorageSync('username',that.username);
+						uni.setStorageSync('password',that.password);
 						setTimeout(() => {    
 							if(res.code=="200")
 								uni.redirectTo({
@@ -86,5 +96,28 @@
 </script>
 
 <style lang="scss">
-
+	.content{
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+		margin: 250rpx 0 0 0;
+		.button{
+			width: 400rpx;
+			margin: 50rpx 0 0 0;
+			justify-content: center;
+			display: flex;
+			flex-direction: column;
+		}
+	}
+	.avatar{
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+		margin: 100rpx 0 200rpx 0;
+	}
+	.form{
+		margin: 0 80rpx 0 80rpx;
+	}
 </style>
