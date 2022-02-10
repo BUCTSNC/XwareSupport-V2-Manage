@@ -22,6 +22,24 @@ const install = (Vue,vm) =>{
 	let getMyAppointment = (username)=>{
 		return vm.$u.post("/getAppointment",{username})
 	}
+	let submitTicket = (dics)=>{
+		return vm.$u.post("/submitTicket",{dics:dics})
+	}
+	let pdfGeneration = (uuid,username)=>{
+		return vm.$u.get(`/pdf?uuid=${uuid}&username=${username}`)
+	}
+	let downloadPdf = (uuid,username)=>{
+		return vm.$u.get(`/download?uuid=${uuid}&username=${username}`)
+	}
+	let cancelwork = (uuid,username)=>{
+		return vm.$u.delete("/cancelwork",{uuid:uuid,username:username})
+	}
+	let loadTicket = (uuid,username)=>{
+		return vm.$u.post("/loadTicket",{uuid:uuid,username:username})
+	}
+	// let pdfGeneration = (uuid,username)=>{
+	// 	return vm.$u.post("/pdf",{uuid:uuid,username:username})
+	// }
 	vm.$u.api = {
 		register,
 		login,
@@ -29,6 +47,11 @@ const install = (Vue,vm) =>{
 		startService,
 		buildForm,
 		getMyAppointment,
+		submitTicket,
+		pdfGeneration,
+		downloadPdf,
+		cancelwork,
+		loadTicket,
 	}
 }
 export default {install}
