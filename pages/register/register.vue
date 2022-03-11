@@ -34,39 +34,48 @@
 		},
 		methods:{
 			commit(){
-				console.log("register")
+				//console.log("register")
 				//等待密码加密
 				if(this.username.length==0||this.password.length==0||this.Cpassword.length==0){
 					uni.showModal({
-						title:"存在未填项，请重新填写"
+						title:"存在未填项，请重新填写",
+						showCancel: false,
 					})
 				}else if(this.password!=this.Cpassword){
 					uni.showModal({
-						title:"两次密码填写不一致"
+						title:"两次密码填写不一致",
+						showCancel: false,
 					})
 				}else if(this.password.length<6||this.password.length>18){
 					uni.showModal({
-						title:"密码长度应大于等于6且小于等于18"
+						title:"密码长度应大于等于6且小于等于18",
+						showCancel: false,
 					})
-				}else if(this.checkPassword(this.password)==false){
-					uni.showModal({
-						title:"密码长度应包含大小写字母、数字三种字符"
-					})
-				}else{
+				}
+				// else if(this.checkPassword(this.password)==false){
+				// 	uni.showModal({
+				// 		title:"密码长度应包含大小写字母、数字三种字符"
+				// 	})
+				// }
+				else{
 					let that = this
-					console.log(this.checkPassword(this.password))
+					//console.log(this.checkPassword(this.password))
 					this.$u.api.register(this.username,this.password).then(res=>{
-						console.log(res)
-						uni.showModal({
+						//console.log(res)
+						uni.showToast({
 							title:res.msg,
+							showCancel: false,
 						})
 						uni.setStorageSync('username',that.username);
 						uni.setStorageSync('password',that.password);
 						setTimeout(() => {    
 							if(res.code=="200")
-								uni.redirectTo({
-									url:"../login/login"
+								uni.navigateBack({
+									delta:1
 								})
+								// uni.redirectTo({
+								// 	url:"../login/login"
+								// })
 						}, 2000)
 					})
 				}

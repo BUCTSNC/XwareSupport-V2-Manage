@@ -106,16 +106,17 @@
 					success: (res) => {
 						if(res.confirm){
 							this.$u.api.cancelwork(uuid,username).then(res=>{
-								console.log(res)
+								//console.log(res)
 							})
 							uni.showToast({
 								title:"取消预约成功！"
 							})
-							console.log("成功取消预约")
+							//console.log("成功取消预约")
 							this.loadList()
-						}else if(res.cancel){
-							console.log("取消点击")
 						}
+						//else if(res.cancel){
+						//	console.log("取消点击")
+						//}
 					},
 				})
 				
@@ -127,7 +128,7 @@
 					this.finish = []
 					for(let i=0;i<res.data.appointments.length;i++)	
 					{
-						console.log(res.data.appointments[i])
+						//console.log(res.data.appointments[i])
 						if(res.data.appointments[i].dealStatus === 1){
 							that.doing.push(res.data.appointments[i])
 						}else if(res.data.appointments[i].dealStatus === 2 || res.data.appointments[i].dealStatus === 0){
@@ -137,7 +138,6 @@
 				})
 			},
 			fillTicket(uuid,username){
-				console.log(uuid,username)
 				setTimeout(()=>{
 					uni.navigateTo({
 						url:"../fillTickets/fillTickets?uuid="+uuid+"&username="+username
@@ -155,9 +155,10 @@
 								url:"../fillTickets/fillTickets?uuid="+UUID+"&username="+username,
 							})
 							
-						}else if(res.cancel){
-							console.log("取消点击")
 						}
+						// else if(res.cancel){
+						// 	console.log("取消点击")
+						// }
 						
 					},
 				})

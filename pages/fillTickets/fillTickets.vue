@@ -59,7 +59,7 @@
 					finalEffect:"",
 					companions:"",
 					pcBrand:"",
-					pcmodel:"",
+					pcModel:"",
 					//外键
 					username:"",
 					uuid:"",
@@ -69,7 +69,7 @@
 		
 		onLoad(params) {
 			this.windowHeight = uni.getSystemInfoSync().windowHeight
-			console.log("fillTicketsparams:",params)
+			//console.log("fillTicketsparams:",params)
 			this.username = params['username']
 			this.uuid = params['uuid']
 			this.LoadTicket()
@@ -78,14 +78,14 @@
 		methods: {
 			LoadTicket(){
 				this.$u.api.loadTicket(this.uuid,this.username).then(res=>{
-					console.log(res)
+					//console.log(res)
 					this.form.problem=res.data.problem
 					this.form.problemType=res.data.problemType
 					this.form.inspection=res.data.inspection
 					this.form.processAndWays=res.data.process
 					this.form.finalEffect=res.data.finalEffect
 					this.form.pcBrand=res.data.pcbrand
-					this.form.pcmodel=res.data.pcmodel
+					this.form.pcModel=res.data.pcModel
 					this.form.companions=res.data.companions
 					this.form.username=res.data.username
 					this.form.uuid=res.data.uuid
@@ -96,11 +96,11 @@
 				this.form.username = this.username
 				this.form.uuid = this.uuid
 				this.$refs.uForm.validate((res) => {
-					console.log(res)
+					//console.log(res)
 					})
-				console.log(this.form)
+				//console.log(this.form)
 				this.$u.api.submitTicket(this.form).then(res=>{
-					console.log(res)
+					//console.log(res)
 					if(res.code=="200")
 					{
 						uni.showModal({
@@ -133,7 +133,7 @@
 						} else {
 							_this.imgList = res.tempFilePaths
 						}
-						console.log(_this.imgList)
+						//console.log(_this.imgList)
 						// console.log("base64 is coming")
 						for(let i=0;i<_this.imgList.length;i++)
 						{

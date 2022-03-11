@@ -26,22 +26,27 @@
 			return {
 				username:"",
 				password:"",
+				privilege:1,
 				src:"../../static/login.jpg"
 			};
 		},
-		onLoad(){
+		onShow(){
 			this.username = uni.getStorageSync("username")
 			this.password = uni.getStorageSync("password")
 		},
 		methods:{
 			login(){
 				let that = this
-				console.log("login")
+				//console.log("login")
 				this.$u.api.login(this.username,this.password).then(res=>{
-					console.log(res)
-					uni.showModal({
+					//console.log(res)
+					that.privilege = res.data
+					uni.showToast({
+						showCancel: false,
+						//buttonText: '确定',
+						//confirmColor: '#ee6666',
 						title:res.msg,
-						//content:"即将进入主页",
+						//content:"即将进入主页",#
 					})
 					setTimeout(() => {    
 						if(res.code=="200")
@@ -49,9 +54,9 @@
 							uni.setStorageSync('username',that.username);
 							uni.setStorageSync('password',that.password);
 							//that.isFirstLogin = false
-							console.log("设置缓存成功")
+							//console.log("设置缓存成功")
 							uni.navigateTo({
-								url:"../index/index?username="+this.username,
+								url:"../index/index?username="+this.username+"&privilege="+this.privilege,
 							})
 						}
 							
